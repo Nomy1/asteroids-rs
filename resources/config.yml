@@ -1,0 +1,9 @@
+---
+title: "Asteroids-rs"
+fullscreen: false
+dimensions: [1024, 768]
+min_dimensions: [1024, 768]
+max_dimensions: [1024, 768]
+vsync: true
+multisampling: 1
+visibility: true
