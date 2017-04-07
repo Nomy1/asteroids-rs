@@ -47,6 +47,7 @@ impl State for PlayState{
 			camera.up = up;
 		}
 
+		// create simple square asset
 		assets.register_asset::<Mesh>();
 		assets.register_asset::<Texture>();
 		assets.load_asset_from_data::<Texture, [f32; 4]>("white", [1.0, 1.0, 1.0, 1.0]);
@@ -55,11 +56,13 @@ impl State for PlayState{
 	
 		// create Player and place in the World (game)
 		let mut player = Player::new();
+		let mut movement = Movement::new([10.0, 10.0]);
 		world.create_now()
 			.with(square.clone())
 			.with(player)
 			.with(LocalTransform::default())
 			.with(Transform::default())
+			.with(movement)
 			.build();
 	}
 
