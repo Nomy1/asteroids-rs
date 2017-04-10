@@ -1,20 +1,31 @@
 use amethyst::ecs::{VecStorage, Component};
 
 
-pub struct Movement{
-	pub velocity: [f32; 2],
+pub struct Velocity{
+	pub linear: [f32; 2],
+	pub angular: f32,
 }
 
-impl Movement{
-	pub fn new(velocity: [f32; 2]) -> Movement{
-		Movement{
-			velocity: velocity,
+impl Velocity{
+	pub fn new(linear: [f32; 2], angular: f32) -> Velocity{
+		Velocity{
+			linear: linear,
+			angular: angular,
 		}
 	}
 }
 
-impl Component for Movement{
-	type Storage = VecStorage<Movement>;
+impl Default for Velocity{
+	fn default() -> Velocity {
+		Velocity{
+			linear: [0.0, 0.0],
+			angular: 0.0,
+		}
+	}
+}
+
+impl Component for Velocity{
+	type Storage = VecStorage<Velocity>;
 }
 
 
@@ -29,3 +40,14 @@ impl Player{
 impl Component for Player{
 	type Storage = VecStorage<Player>;
 }
+
+/*
+pub struct PlayerInput{
+	pub left : bool,
+	pub right : bool,
+	pub forward : bool,
+}
+
+impl Component for PlayerInput{
+	type Storage = VecStorage<PlayerInput>;
+}*/

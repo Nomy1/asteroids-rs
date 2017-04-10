@@ -51,18 +51,17 @@ impl State for PlayState{
 		assets.register_asset::<Mesh>();
 		assets.register_asset::<Texture>();
 		assets.load_asset_from_data::<Texture, [f32; 4]>("white", [1.0, 1.0, 1.0, 1.0]);
-		assets.load_asset_from_data::<Mesh, Vec<VertexPosNormal>>("square", gen_square(1.0, 1.0));
+		assets.load_asset_from_data::<Mesh, Vec<VertexPosNormal>>("square", gen_square(3.0, 3.0));
 		let square = assets.create_renderable("square", "white", "white", "white", 1.0).unwrap();
 	
 		// create Player and place in the World (game)
 		let mut player = Player::new();
-		let mut movement = Movement::new([10.0, 10.0]);
 		world.create_now()
 			.with(square.clone())
 			.with(player)
 			.with(LocalTransform::default())
 			.with(Transform::default())
-			.with(movement)
+			.with(Velocity::new([0.0, 0.0], 50.0))
 			.build();
 	}
 

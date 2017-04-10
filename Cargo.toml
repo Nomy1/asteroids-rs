@@ -5,3 +5,4 @@ authors = ["Jonathan Bro <JonathanBro@gmail.com>"]
 
 [dependencies]
 amethyst = "*"
+cgmath = "0.12.0"
